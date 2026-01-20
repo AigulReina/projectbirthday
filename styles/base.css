@@ -17,7 +17,7 @@ body {
 @font-face {
   font-family: 'BirthdayFont';
   /* Придумайте любое название */
-  src: url('/fonts/TagesschriftCyrillic-Regular.ttf') format('truetype');
+  src: url('../fonts/TagesschriftCyrillic-Regular.ttf') format('truetype');
   /* Проверьте путь к файлу! */
   font-weight: normal;
   font-style: normal;
