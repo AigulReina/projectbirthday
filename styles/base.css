@@ -1,24 +1,24 @@
-/* BASE: Общие сбросы и настройки для всего BODY */
+/* 1. Сначала РЕГИСТРИРУЕМ шрифт (всегда в самом верху файла) */
+@font-face {
+  font-family: 'BirthdayFont';
+  src: url('../fonts/font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 2. Общие сбросы */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 3. ПРИМЕНЯЕМ шрифт к body */
 body {
-  font-family: 'BirthdayFont';
+  font-family: 'BirthdayFont', sans-serif;
+  /* sans-serif добавим как запасной */
   background: #08284c;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-}
-
-/* 1. Регистрируем шрифт */
-@font-face {
-  font-family: 'BirthdayFont';
-  /* Придумайте любое название */
-  src: url('../fonts/font.ttf') format('truetype');
-  /* Проверьте путь к файлу! */
-  font-weight: normal;
-  font-style: normal;
 }
