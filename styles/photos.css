@@ -1,0 +1,178 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== PHOTO MODAL ===== */
+.photo-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
+/* ===== VIDEO ===== */
+/* Контейнер для всех видео */
+.video-section {
+  margin-top: 30px;
+  padding: 0 10px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  /* Позволяет видео вставать в ряд */
+  gap: 40px;
+  /* Расстояние между видео */
+  justify-content: center;
+  /* Центрирует видео на странице */
+}
+
+/* Карточка одного видео */
+.video-preview {
+  position: relative;
+  width: 100%;
+  /* ОГРАНИЧЕНИЕ: на мобильных во всю ширину, 
+       но не больше 320px на компьютере */
+  max-width: 450px;
+
+  aspect-ratio: 9 / 16;
+  /* Пропорции как у телефона */
+  background: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Внутреннее видео больше не растягивается "уродливо" */
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Заполняет рамку, сохраняя свои пропорции */
+
+}
+
+/* Кнопка плей на превью */
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+  /* Важно! Клик пройдет сквозь иконку на видео */
+}
+
+/* Модалки */
+.photo-modal,
+.video-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  /* Очень высокий слой */
+  justify-content: center;
+  align-items: center;
+}
+
+#fullPhotoImg,
+#fullVideo {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* СТРЕЛКИ — ИСПРАВЛЕНИЕ КЛИКА */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 60px;
+  color: white;
+  padding: 30px;
+  cursor: pointer;
+  z-index: 10000;
+  /* Выше чем само фото/видео */
+  user-select: none;
+  background: rgba(0, 0, 0, 0.1);
+  /* Легкий фон, чтобы видеть зону клика */
+}
+
+.arrow:hover {
+  color: #40c6c9;
+}
+
+.arrow.left {
+  left: 0;
+}
+
+.arrow.right {
+  right: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+  color: white;
+  z-index: 10001;
+  cursor: pointer;
+}
+
+/* Цвет кнопки "Назад" */
+.back {
+  color: white !important;
+  /* Делает текст белым */
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+/* Цвет слова "Фото" и "Песни" */
+.title {
+  color: white !important;
+  /* Меняет черный цвет на белый */
+  text-align: center;
+  font-size: 32px;
+  margin: 20px 0;
+}
+
+/* скрываем стрелки на очень маленьких экранах (по желанию) */
+@media (max-width: 480px) {
+  .arrow {
+    font-size: 36px;
+  }
+}

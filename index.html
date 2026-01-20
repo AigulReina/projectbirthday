@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/сердечко.png" type="image/png">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/welcome.css">
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/photos.css">
+    <link rel="stylesheet" href="./styles/music.css">
+</head>
+
+<body>
+    <div id="welcome" class="page active" style="background-image: url('images/велком.jpg');">
+        <div class="animation-container">
+            <img src="images/коронагерл.png" alt="анимированное">
+        </div>
+        <button class="welcome-btn" onclick="openPage('home')">
+            For you!
+        </button>
+    </div>
+
+    <div id="home" class="page" style="background-image: url('images/77358c961aa56096cf920058f34c4a47.jpg');">
+        <section id="profile">
+            <div class="avatar" onclick="showFullAvatar()">
+                <video id="avatarVideo" autoplay loop muted playsinline>
+                    <source src="images/аватар видео.mp4" type="video/mp4">
+                </video>
+                <img src="images/богиня.jpg" id="avatarImg" style="display:none;">
+            </div>
+
+            <div id="avatarModal" class="avatar-modal" onclick="closeFullAvatar()">
+                <span class="close-btn">&times;</span>
+                <img class="modal-content" id="fullAvatarImg">
+            </div>
+
+            <div class="nickname">Aidana212</div>
+            <p>✨ special for you ✨</p>
+            <div class="stats">
+                <div><span>12</span>Подписки</div>
+                <div><span>21</span>Подписчики</div>
+                <div><span>2026K</span>Лайки</div>
+            </div>
+        </section>
+
+        <div class="home-gallery">
+            <img src="images/сдр.jpg" alt="Photo 1" onclick="openHomePhoto(this)">
+            <img src="images/фотик.jpg" alt="Photo 2" onclick="openHomePhoto(this)">
+            <img src="images/сдр2.jpg" alt="Photo 3" onclick="openHomePhoto(this)">
+        </div>
+
+        <button class="image-btn-wrapper" onclick="openBirthdayQuest()">
+            <img src="images/кнопка для главной.png" alt="сюрприз">
+            <span class="btn-text">НАЖМИ</span>
+        </button>
+    </div>
+
+    <div id="photos" class="page">
+        <button class="back" onclick="openPage('home')">← назад</button>
+        <div class="title">Фото</div>
+        <div class="gallery">
+            <img src="images/фото с айданой1.jpg" onclick="openPhoto(this)">
+            <img src="images/фотос айданой3.jpg" onclick="openPhoto(this)">
+            <img src="images/фото с айданой2.jpg" onclick="openPhoto(this)">
+        </div>
+
+        <div class="video-section">
+            <div class="video-preview" onclick="openVideo(this)">
+                <video muted playsinline>
+                    <source src="images/после фильма барби.mp4" type="video/mp4">
+                </video>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="video-preview" onclick="openVideo(this)">
+                <video muted playsinline>
+                    <source src="images/happy.MOV" type="video/mp4">
+                </video>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="video-preview" onclick="openVideo(this)">
+                <video muted playsinline>
+                    <source src="images/поздравляшка.MP4" type="video/mp4">
+                </video>
+                <div class="play-icon">▶</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="music" class="page">
+        <button class="back" onclick="openPage('home')">← назад</button>
+        <div class="title">Песни</div>
+        <div class="music-box">
+            <div class="music-cover" id="musicCover">
+                <img src="images/бабочки.gif" id="coverImg" alt="Music Cover">
+            </div>
+            <div class="track-info">
+                <div id="trackName" class="track-name">Название песни</div>
+                <div class="progress-container">
+                    <input type="range" id="progress" value="0" max="100">
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="myAudio"></audio>
+            <div class="player-controls">
+                <img src="images/кнопка_назад_перемотка_плей-.png" class="nav-btn" onclick="prevTrack()">
+                <img src="images/кнопка_плей_синиий_вариант-.png" id="playBtn" class="play-trigger"
+                    onclick="togglePlayPause()">
+                <img src="images/пауза плей синия.png" id="pauseBtn" class="play-trigger" onclick="togglePlayPause()"
+                    style="display: none;">
+                <img src="images/кнопка_вперед_плей-.png" class="nav-btn" onclick="nextTrack()">
+            </div>
+            <div class="playlist-container">
+                <ul id="playlistView"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <button onclick="openPage('home')">
+            <img src="./images/главная-removebg-preview.png" alt="Home" class="nav-icon">
+            <span>Главная</span>
+        </button>
+        <button onclick="openPage('photos')">
+            <img src="./images/фото-removebg-preview.png" alt="Фото" class="nav-icon">
+            <span>Фото</span>
+        </button>
+        <button onclick="openPage('music')">
+            <img src="./images/музыка-removebg-preview.png" alt="Музыка" class="nav-icon">
+            <span>Музыка</span>
+        </button>
+    </div>
+
+    <div id="photoModal" class="photo-modal">
+        <span class="close-btn" onclick="closePhoto()">✕</span>
+        <span class="arrow left" onclick="prevMedia()">‹</span>
+        <img id="fullPhotoImg">
+        <span class="arrow right" onclick="nextMedia()">›</span>
+    </div>
+
+    <div id="videoModal" class="video-modal">
+        <span class="close-btn" onclick="closeVideo()">✕</span>
+        <span class="arrow left" onclick="prevMedia()">‹</span>
+        <video id="fullVideo" controls playsinline></video>
+        <span class="arrow right" onclick="nextMedia()">›</span>
+    </div>
+    <div id="questModal" class="photo-modal"
+        style="display: none; z-index: 2000; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
+        <div class="quest-content"
+            style="text-align: center; width: 85%; max-width: 400px; padding: 25px; background: #1a1a1a; border-radius: 25px; border: 2px solid #ff477d;">
+            <h2 style="color: white; margin-bottom: 25px;">Выбери своё настроение ✨</h2>
+
+            <div class="meme-options" style="display: flex; gap: 15px;">
+                <div class="meme-card" onclick="startSurprise('свеча.mp4')" style="flex: 1; cursor: pointer;">
+                    <img src="images/мемчик1.jpg" style="width: 100%; border-radius: 15px; border: 2px solid #ff477d;">
+                    <p style="color: white; margin-top: 10px;">Vibe 1 🔥</p>
+                </div>
+
+                <div class="meme-card" onclick="startSurprise('мемное тикток.mp4')" style="flex: 1; cursor: pointer;">
+                    <img src="images/мемчик2.jpg" style="width: 100%; border-radius: 15px; border: 2px solid #fff;">
+                    <p style="color: white; margin-top: 10px;">Vibe 2 🌸</p>
+                </div>
+            </div>
+            <button onclick="closeQuest()"
+                style="margin-top: 20px; color: white; background: none; border: 1px solid white; padding: 5px 15px; border-radius: 10px;">Назад</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+/* LAYOUT: Стили для контейнеров страниц и навигации */
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  padding-bottom: 80px;
+  /* Добавим, чтобы контент не перекрывался навигацией */
+  overflow-y: auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat;
+  display: none;
+  pointer-events: none;
+}
+
+.page.active {
+  display: block;
+  pointer-events: auto;
+}
+
+.page:not(.active) {
+  display: none !important;
+}
+
+/* bottom nav */
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background: rgba(220, 237, 236, 0.9);
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #08284c;
+  z-index: 100;
+  /* Для надежности */
+  padding-bottom: 10px
+}
+
+.nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: 'BirthdayFont';
+  justify-content: center;
+  padding: 5px;
+  gap: 2px;
+}
+
+.nav button span {
+  font-family: 'BirthdayFont';
+  /* шрифт */
+  font-size: 14px;
+  /* Увеличить это число, если нужно еще больше */
+  font-weight: bold;
+  /* Делаем жирным для четкости */
+  color: #08284c;
+  /* Цвет текста под иконкой */
+  line-height: 1;
+  /* Прижимание текста ближе к иконке */
+  display: block;
+}
+
+.nav-icon {
+  width: 50px;
+  /* Ширина иконки */
+  height: 50px;
+  /* Высота иконки */
+  object-fit: contain;
+  /* Чтобы картинка не сжималась */
+  transition: transform 0.2s;
+  /* Эффект при нажатии */
+}
+
+/* Эффект: иконка немного уменьшается, когда ты на неё нажимаешь */
+.nav button:active .nav-icon {
+  transform: scale(0.8);
+}
+
+/* back button */
+.back {
+  background: none;
+  border: none;
+  font-size: 25px;
+  font-family: 'BirthdayFont';
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* scrapbook style headline */
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-family: 'BirthdayFont';
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Прячем стрелки пролистывания в окне видео-сюрприза */
+#videoModal .arrow {
+  display: none !important;
+}

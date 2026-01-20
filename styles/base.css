@@ -1,0 +1,24 @@
+/* BASE: Общие сбросы и настройки для всего BODY */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'BirthdayFont';
+  background: #08284c;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 1. Регистрируем шрифт */
+@font-face {
+  font-family: 'BirthdayFont';
+  /* Придумайте любое название */
+  src: url('/fonts/TagesschriftCyrillic-Regular.ttf') format('truetype');
+  /* Проверьте путь к файлу! */
+  font-weight: normal;
+  font-style: normal;
+}

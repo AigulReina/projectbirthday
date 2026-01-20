@@ -1,0 +1,314 @@
+#profile {
+  /* путь к картинке */
+  background-image: url('../images/фон.gif');
+
+  /* 2. Настройки, чтобы картинка смотрелась красиво */
+  background-size: 110%;
+  /* Заполнить весь блок */
+  background-position: center;
+  /* Центрировать фото */
+  background-repeat: no-repeat;
+
+  padding: 20px 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 20px 20px 20px 20px;
+
+  /* Цвет текста (белый), чтобы он выделялся на фоне */
+  color: rgb(234, 232, 228);
+}
+
+/* Контейнер аватара (круг) */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 3px solid #54669d;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Стили для картинки внутри аватара */
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Стили для ВИДЕО внутри аватара */
+.avatar video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Видео заполнит круг полностью */
+  display: block;
+}
+
+.nickname {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  display: block;
+}
+
+#profile p {
+  opacity: 0.9;
+  font-size: 1.5rem;
+  color: #d37a21;
+  font-family: 'BirthdayFont';
+  margin: 5px 0;
+}
+
+/* Статистика: Подписки, Подписчики, Лайки */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.2rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+
+}
+
+.stats div {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #f8f7f7;
+  min-width: 80px;
+}
+
+.stats span {
+  display: block;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fbf1f1;
+}
+
+/* =========================================== */
+/* СТИЛИ МОДАЛЬНОГО ОКНА (Просмотр аватара)    */
+/* =========================================== */
+
+.avatar-modal {
+  display: none;
+  /* Скрыто по умолчанию */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  /* Размытие заднего плана */
+  cursor: zoom-out;
+}
+
+/* Контент внутри модалки (большое фото) */
+.modal-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  animation: zoomIn 0.3s ease;
+  pointer-events: auto;
+  /* Чтобы картинку можно было сохранить или зумить */
+}
+
+/* Кнопка закрытия */
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Анимация увеличения при открытии */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Блок с тремя фото на главной */
+.home-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  /* Расстояние между фото */
+  margin: 20px 10px;
+  /* Отступы сверху и по бокам */
+}
+
+.home-gallery img {
+  width: 25%;
+  /* Чтобы 3 фото влезли в ряд */
+  height: auto;
+  /* Фиксированная высота для ровности */
+  object-fit: cover;
+  /* Чтобы фото не растягивались */
+  border-radius: 15px;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  /* Указатель пальца при наведении */
+  pointer-events: auto;
+  /* Гарантирует, что клики проходят */
+}
+
+.home-gallery img:hover {
+  transform: scale(1.03);
+  /* Легкий эффект при наведении */
+}
+
+/* Делаем обертку кнопки позицией для текста */
+.image-btn-wrapper {
+  position: relative;
+  /* Это важно для позиционирования текста */
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin: 15px auto 100px;
+  width: 15%;
+}
+
+
+.image-btn-wrapper img {
+  width: 60%;
+  height: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.image-btn-wrapper:hover img {
+  transform: scale(1.08);
+  /* Эффект при наведении */
+}
+
+
+/* Стили самого текста на кнопке */
+.btn-text {
+  position: absolute;
+  /* Текст "летает" над кнопкой */
+  top: 50%;
+  /* Центрируем по вертикали */
+  left: 50%;
+  /* Центрируем по горизонтали */
+  transform: translate(-50%, -50%);
+  /* Точное выравнивание по центру */
+
+  color: white;
+  /* Цвет текста */
+  font-size: 1.2rem;
+  /* Размер */
+  font-weight: bold;
+  font-family: 'BirthdayFont';
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Тень, чтобы текст читался */
+  white-space: nowrap;
+  /* Чтобы текст не переносился */
+  pointer-events: none;
+  /* Чтобы клик проходил сквозь текст на кнопку */
+}
+
+/* ========================================== */
+/* УНИВЕРСАЛЬНАЯ МОБИЛЬНАЯ ВЕРСИЯ (iPhone/Android) */
+/* ========================================== */
+/* ============================================================ */
+/* АДАПТИВНОСТЬ: ОТ IPHONE 13 ДО ПЛАНШЕТОВ                      */
+/* ============================================================ */
+
+/* 1. СМАРТФОНЫ (от самого маленького до самых больших Pro Max) */
+/* Включает iPhone 13 (390px) и горизонтальный вид (до 932px) */
+@media screen and (min-width: 375px) and (max-width: 932px) {
+
+  .home-gallery {
+    gap: 10px;
+    padding: 0 10px;
+    margin: 20px 0;
+  }
+
+  .home-gallery img {
+    width: 31%;
+    /* 3 фото в ряд */
+    height: 180px;
+    /* Увеличенная высота для красоты */
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .image-btn-wrapper {
+    width: 55% !important;
+    /* Кнопка сюрприза */
+    margin-bottom: 110px;
+  }
+
+  .btn-text {
+    font-size: 0.75rem !important;
+    /* Уменьшенный текст кнопки */
+    line-height: 1.2;
+  }
+
+  .stats div {
+    font-size: 0.95rem;
+    /* Оптимально для цифр статистики */
+  }
+
+  /* Адаптация нижнего меню под iPhone */
+  .nav {
+    height: 75px;
+    padding-bottom: 10px;
+    /* Safe Area для нижней полоски */
+  }
+}
+
+
+/* 3. ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (меньше 375px — старые iPhone SE) */
+@media screen and (max-width: 365px) {
+  .home-gallery img {
+    height: 130px;
+  }
+
+  .image-btn-wrapper {
+    width: 40%;
+  }
+
+  .btn-text {
+    font-size: 0.65rem !important;
+  }
+
+  .stats div {
+    font-size: 0.8rem;
+  }
+}
+
+/* Адаптация нижнего меню под iPhone */
+.nav {
+  height: 75px;
+  padding-bottom: 10px;
+  /* Safe Area для нижней полоски */
+}

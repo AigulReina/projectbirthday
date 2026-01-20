@@ -1,0 +1,225 @@
+/* MUSIC: Основные стили (Мобильная версия по умолчанию) */
+.music-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.music-cover {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.music-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.music-cover.playing {
+  animation: pulse 2s infinite ease-in-out;
+  border: 4px solid #ff477d;
+  box-shadow: 0 0 15px rgba(255, 71, 125, 0.6);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.track-name {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
+}
+
+.progress-container {
+  width: 100%;
+  max-width: 300px;
+}
+
+#progress {
+  width: 100%;
+  cursor: pointer;
+  accent-color: #ff477d;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-btn {
+  width: 45px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.play-trigger {
+  width: 90px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* --- ПЛЕЙЛИСТ С РАБОЧИМ СКРОЛЛОМ --- */
+.playlist-container {
+  width: 100%;
+  max-width: 300px;
+  max-height: 250px;
+  /* Высота, после которой появится скролл */
+  overflow-y: auto;
+  /* Включает вертикальную прокрутку */
+  overflow-x: hidden;
+  /* Выключает горизонтальную прокрутку */
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 15px;
+
+  /* Плавный скролл для мобильных */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Красивый скроллбар (как в Spotify) */
+.playlist-container::-webkit-scrollbar {
+  width: 6px;
+  /* Ширина полоски */
+}
+
+.playlist-container::-webkit-scrollbar-thumb {
+  background: #ff477d;
+  /* Цвет ползунка */
+  border-radius: 10px;
+}
+
+.playlist-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  /* Цвет дорожки */
+}
+
+#playlistView {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#playlistView li {
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  /* Защита от выделения текста при кликах */
+  user-select: none;
+}
+
+#playlistView li:last-child {
+  border-bottom: none;
+  /* Убираем черту у последней песни */
+}
+
+#playlistView li.active {
+  color: #ff477d;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================== */
+/* АДАПТИВНОСТЬ ПО ДИАПАЗОНАМ                 */
+/* ========================================== */
+
+/* 1. СМАРТФОНЫ (iPhone 13 и др. до 932px) */
+@media screen and (min-width: 375px) and (max-width: 932px) {
+  .music-box {
+    gap: 15px;
+    padding-bottom: 100px;
+    /* Чтобы навигация не перекрывала */
+  }
+
+  .music-cover {
+    width: 65vw;
+    /* Размер зависит от ширины экрана телефона */
+    max-width: 260px;
+  }
+
+  .track-name {
+    font-size: 1.1rem;
+    width: 90%;
+  }
+
+  .progress-container {
+    width: 85%;
+  }
+
+  .player-controls {
+    gap: 20px;
+  }
+
+  .play-trigger {
+    width: 80px;
+  }
+
+  .nav-btn {
+    width: 40px;
+  }
+
+  .playlist-container {
+    width: 90%;
+    max-height: 220px;
+    /* Ограничиваем высоту для мобилок */
+  }
+}
+
+/* 2. ПЛАНШЕТЫ И ПК (от 933px) */
+@media screen and (min-width: 933px) {
+  .music-box {
+    max-width: 600px;
+    margin: 40px auto;
+    gap: 25px;
+  }
+
+  .music-cover {
+    width: 280px;
+    height: 280px;
+  }
+
+  .playlist-container {
+    width: 100%;
+    max-width: 450px;
+    max-height: 300px;
+  }
+
+  #playlistView li {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+}
